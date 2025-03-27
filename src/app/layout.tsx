@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Bluehouseworld",
   description: "We are re-defining the way you shop online.",
   openGraph: {
-    images: "/Bluehouseworld.jpg"
+    images: "/Bluehouseworld-og.jpg"
   }
 };
 
