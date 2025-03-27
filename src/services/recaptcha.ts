@@ -8,7 +8,13 @@ export async function createAssessment(
   const projectID = process.env.GCP_PROJECT_ID!;
   // Create the reCAPTCHA client.
   // TODO: Cache the client generation code (recommended) or call client.close() before exiting the method.
-  const client = new RecaptchaEnterpriseServiceClient();
+  const client = new RecaptchaEnterpriseServiceClient({
+    credentials: {
+      private_key: process.env.SA_PRIVATE_KEY!.split(String.raw`\n`).join('\n'),
+      client_email: process.env.SA_CLIENT_EMAIL!,
+    },
+  });
+
   const projectPath = client.projectPath(projectID);
 
   // Build the assessment request.
